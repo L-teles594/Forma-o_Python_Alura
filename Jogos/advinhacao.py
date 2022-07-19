@@ -12,7 +12,7 @@ def gerar_numero():
 def chutando_numero():
     print('*' * 32)
     while True:
-        chute = input('digite seu número: ')
+        chute = input('Digite um número inteiro entre 0 e 100: ')
         if chute.isdigit():
             chute = int(chute)
             return chute
@@ -38,30 +38,29 @@ def dificuldade():
         dificuldade()
 
 
-if __name__ == '__main__':
+def main():
+    apresentacao()
+    tentativas = dificuldade()
+    print(f'Você tem {tentativas} tentativas')
+    numero_secreto = gerar_numero()
+    print(numero_secreto)
+    chute = chutando_numero()
 
-    def main():
-        apresentacao()
-        tentativas = dificuldade()
+    while tentativas > 1:
+        print('*' * 32)
+        if chute == numero_secreto:
+            print('Você acertou!')
+            return
+        else:
+            if chute > numero_secreto:
+                print('Você errou! seu chute foi maior que o número secreto.')
+            elif chute < numero_secreto:
+                print('Você errou! seu chute foi menor que o número secreto.')
+            tentativas -= 1
         print(f'Você tem {tentativas} tentativas')
-        numero_secreto = gerar_numero()
-        print(numero_secreto)
         chute = chutando_numero()
-
-        while tentativas > 1:
-            print('*' * 32)
-            if chute == numero_secreto:
-                print('Você acertou!')
-                return
-            else:
-                if chute > numero_secreto:
-                    print('Você errou! seu chute foi maior que o número secreto.')
-                elif chute < numero_secreto:
-                    print('Você errou! seu chute foi menor que o número secreto.')
-                tentativas -= 1
-            print(f'Você tem {tentativas} tentativas')
-            chute = chutando_numero()
-        print(f'Você ficou sem tentativas, o número secreto era {numero_secreto}')
+    print(f'Você ficou sem tentativas, o número secreto era {numero_secreto}')
 
 
+if __name__ == '__main__':
     main()

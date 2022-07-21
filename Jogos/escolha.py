@@ -1,4 +1,6 @@
 import advinhacao
+import forca
+
 while True:
     print('*' * 32)
     print('1 - Advinhação')
@@ -7,7 +9,7 @@ while True:
     if escolha == '1':
         advinhacao.main()
     elif escolha == '2':
-        pass
+        forca.main()
     else:
         print('Faça uma escolha válida')
     if input('Deseja jogar novamente [s/n]: ').lower()[0] == 'n':

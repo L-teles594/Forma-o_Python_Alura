@@ -6,7 +6,7 @@ class Conta:
         self.__numero = numero
 
     def sacar(self, valor):
-        self.__saldo -= valor
+        self.__saldo -= valor if self.pode_sacar(valor) else print('Você não tem limite para saque.')
 
     def depositar(self, valor):
         self.__saldo += valor
@@ -17,6 +17,9 @@ class Conta:
     def transferir(self, recebedor, valor):
         self.__saldo -= valor
         recebedor.depositar(valor)
+
+    def __pode_sacar(self, valor_a_sacar):
+        return valor_a_sacar <= 1000 + self.__saldo
 
     # Getters com @property
     @property
@@ -36,3 +39,7 @@ class Conta:
     def limite(self, limite):
         self.__limite = limite
 
+    # métodos de classe
+    @staticmethod
+    def codigo_dos_bancos():
+        return {'BB': '001', 'Caixa': '104', 'Bradesco': '237'}

@@ -1,47 +1,35 @@
-class Filme:
+class Programa:
+    def __init__(self, nome, ano):
+        self._likes = 0
+        self.ano = ano
+        self._nome = nome.title()
+
+    @property
+    def likes(self):
+        return self._likes
+
+    def deu_like(self):
+        self._likes += 1
+
+    @property
+    def nome(self):
+        return self._nome
+
+    @nome.setter
+    def nome(self, novo_nome):
+        self._nome = novo_nome.title()
+
+
+class Filme(Programa):
     def __init__(self, nome, ano, duracao):
-        self.__likes = 0
+        super().__init__(nome, ano)
         self.duracao = duracao
-        self.ano = ano
-        self.__nome = nome.title()
-
-    @property
-    def likes(self):
-        return self.__likes
-
-    def deu_like(self):
-        self.__likes += 1
-
-    @property
-    def nome(self):
-        return self.__nome
-
-    @nome.setter
-    def nome(self, novo_nome):
-        self.__nome = novo_nome.title()
 
 
-class Serie:
+class Serie(Programa):
     def __init__(self, nome, ano, temporadas):
-        self.__likes = 0
+        super().__init__(nome, ano)
         self.temporadas = temporadas
-        self.ano = ano
-        self.__nome = nome.title()
-
-    @property
-    def likes(self):
-        return self.__likes
-
-    def deu_like(self):
-        self.__likes += 1
-
-    @property
-    def nome(self):
-        return self.__nome
-
-    @nome.setter
-    def nome(self, novo_nome):
-        self.__nome = novo_nome.title()
 
 
 if __name__ == '__main__':
